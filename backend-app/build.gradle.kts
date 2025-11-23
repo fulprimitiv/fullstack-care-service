@@ -23,7 +23,9 @@ repositories {
 extra["snippetsDir"] = file("build/generated-snippets")
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:4.0.0-M3")
+// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-gradle-plugin
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("io.jsonwebtoken:jjwt:0.13.0")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-web")

@@ -1,41 +1,39 @@
 package org.example.backendapp.entity
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.EnumType
-import jakarta.persistence.Enumerated
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import java.time.LocalDate
+import jakarta.persistence.*
+import java.time.Instant
 
-@Entity
+@Entity(name = "tbl_users")
 data class User(
-    @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
-
-    val name: String,
-
-    val phone: String,
-
-    val address: String,
-
-    val birthDate: LocalDate,
-
+    var name: String,
+    var phone: String,
+    var address: String,
+    var birthday: Instant,
     @Column(unique = true)
     val email: String,
-
     @Enumerated(EnumType.STRING)
     val role: UserRole,
-
-    val rating: Double = 0.0,
-
-    val registeredAt: LocalDate = LocalDate.now(),
-
-    val completedOrders: Int = 0,
-
-    val activeOrders: Int = 0,
-
+    val registeredAt: Instant = Instant.now(),
     val password: String
-)
+) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0
+    
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is User) return false
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+
+    override fun toString(): String {
+        return "User(id=$id, name='$name')"
+    }
+}
