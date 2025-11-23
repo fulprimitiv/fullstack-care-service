@@ -2,7 +2,6 @@ package org.example.backendapp.service.repository
 
 import org.example.backendapp.entity.HelpRequest
 import org.example.backendapp.entity.HelpRequestStatus
-import org.example.backendapp.entity.HelpRequestType
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface HelpRequestRepository : JpaRepository<HelpRequest, Long> {
@@ -11,5 +10,5 @@ interface HelpRequestRepository : JpaRepository<HelpRequest, Long> {
     fun findAllByRecipientId(recipientId: Long): Set<HelpRequest>
     fun findAllByVolunteerId(volunteerId: Long): Set<HelpRequest>
     
-    fun findAllAndStatusIn(status: List<HelpRequestStatus>): Set<HelpRequest>
+    fun findAllByStatusIn(status: List<HelpRequestStatus>): Set<HelpRequest>
 }

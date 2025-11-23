@@ -4,6 +4,7 @@ plugins {
     id("org.springframework.boot") version "3.5.7"
     id("io.spring.dependency-management") version "1.1.7"
     id("org.asciidoctor.jvm.convert") version "3.3.2"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.9.25"
 }
 
 group = "org.example"
@@ -23,8 +24,11 @@ repositories {
 extra["snippetsDir"] = file("build/generated-snippets")
 
 dependencies {
-// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-gradle-plugin
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+    implementation("io.jsonwebtoken:jjwt-jackson:0.13.0")
+    implementation("io.jsonwebtoken:jjwt-impl:0.13.0")
+    implementation("io.jsonwebtoken:jjwt-api:0.13.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("io.jsonwebtoken:jjwt:0.13.0")
     implementation("org.springframework.boot:spring-boot-starter-security")
@@ -39,6 +43,7 @@ dependencies {
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation("org.springframework.security:spring-security-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    
 }
 
 kotlin {

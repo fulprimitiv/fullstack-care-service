@@ -13,7 +13,8 @@ data class HelpRequest(
     @Enumerated(EnumType.STRING)
     var status: HelpRequestStatus = HelpRequestStatus.CREATED,
     val createdDate: Instant = Instant.now(),
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "recipient_id")
     val recipient: User,
 ) {
     @Id
@@ -26,7 +27,8 @@ data class HelpRequest(
     @Column(nullable = true, updatable = true)
     var comment: String? = null
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "volunteer_id")
     var volunteer: User? = null
     
     override fun equals(other: Any?): Boolean {

@@ -24,7 +24,7 @@ class HelpRequestService(
                 helpRequestRepository.findAllByVolunteerId(id)
 
     fun findAllWithStatusCreated(): Set<HelpRequest> {
-        return helpRequestRepository.findAllAndStatusIn(listOf(HelpRequestStatus.CREATED))
+        return helpRequestRepository.findAllByStatusIn(listOf(HelpRequestStatus.CREATED))
     }
 
     @Transactional
