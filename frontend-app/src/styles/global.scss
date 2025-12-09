@@ -1,0 +1,48 @@
+@use "./normalize" as *;
+@use "./fonts" as *;
+@use "./variables" as *;
+
+body {
+   font-family: sans-serif;
+   background-color: $bg-primary;
+   color: $color-text-primary;
+   min-height: 100%;
+}
+
+a {
+   color: $color-accent-primary;
+   text-decoration: none;
+
+   &:hover {
+      text-decoration: underline;
+   }
+}
+
+button {
+   font-family: sans-serif;
+   cursor: pointer;
+   border: none;
+   background: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-weight: 600;
+   color: $color-text-primary;
+}
+
+p {
+   color: $color-text-secondary;
+}
+
+.app-wrapper {
+   // вписать правила
+}
+
+.app-container {
+   // вписать правила
+}
