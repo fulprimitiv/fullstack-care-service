@@ -1,1 +1,31 @@
-// добавить шрифты woff2
+@font-face {
+	font-family: "SegoeUI";
+	src: url("../../public/fonts/SegoeUI-Light.woff2") format("woff2");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "SegoeUI";
+	src: url("../../public/fonts/SegoeUI-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "SegoeUI";
+	src: url("../../public/fonts/SegoeUI-SemiBold.woff2") format("woff2");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "SegoeUI";
+	src: url("../../public/fonts/SegoeUI-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}

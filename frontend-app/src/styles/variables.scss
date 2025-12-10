@@ -1,16 +1,36 @@
-// заредачить цвета
+// TEXT COLORS
+$color-text-primary: #333333;
+$color-text-secondary: #666666;
+$color-text-light: #999999;
+$color-text-inverse: #ffffff;
 
-$color-text-primary: #000000;
-$color-text-secondary: #000000;
+// ACCENT COLORS
+$color-accent-primary: #1a75d1;
+$color-accent-success: #2e7d33;
+$color-accent-success-light: #4db04f;
 
-$color-accent-primary: #000000;
-$color-accent-done: #000000;
-$color-accent-tertiary: #000000;
+$color-accent-warning: #ff9900;
+$color-accent-warning-light: #ffd600;
 
+$color-accent-error: #c72929;
+$color-accent-error-light: #ffebed;
+
+// BACKGROUND COLORS
 $bg-primary: #ffffff;
-$bg-secondary: #ffffff;
-$bg-done: #ffffff;
-$bg-image-overlay: #ffffff;
+$bg-secondary: #fafafa;
+$bg-tertiary: #f7fafa;
+$bg-muted: #e3f2fc;
+$bg-success: #e8f5e8;
+$bg-warning: #fff2e0;
+$bg-error: #ffebed;
+$bg-neutral: #f0f7f2;
 
-$bg-overlay: rgba(0, 0, 0, 0.4);
+// BORDER / DIVIDER / UI ELEMENTS
+$border-color: #c9c9c9;
+$divider-color: #ddd;
+
 $shadow-color: rgba(0, 0, 0, 0.05);
+
+// OVERLAYS / MODALS
+$overlay-bg: rgba(0, 0, 0, 0.4);
+$bg-image-overlay: rgba(0, 0, 0, 0.15);

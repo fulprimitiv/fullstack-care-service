@@ -3,7 +3,7 @@
 @use "./variables" as *;
 
 body {
-   font-family: sans-serif;
+   font-family: "SegoeUI", Arial, sans-serif;
    background-color: $bg-primary;
    color: $color-text-primary;
    min-height: 100%;
@@ -37,12 +37,4 @@ h6 {
 
 p {
    color: $color-text-secondary;
-}
-
-.app-wrapper {
-   // вписать правила
-}
-
-.app-container {
-   // вписать правила
 }
