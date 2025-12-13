@@ -5,17 +5,13 @@
 body {
    font-family: "SegoeUI", Arial, sans-serif;
    background-color: $bg-primary;
-   color: $color-text-primary;
+   color: $color-primary;
    min-height: 100%;
 }
 
 a {
    color: $color-accent-primary;
    text-decoration: none;
-
-   &:hover {
-      text-decoration: underline;
-   }
 }
 
 button {
@@ -32,9 +28,13 @@ h4,
 h5,
 h6 {
    font-weight: 600;
-   color: $color-text-primary;
+   color: $color-primary;
 }
 
 p {
-   color: $color-text-secondary;
+   color: $color-secondary;
+}
+
+.app-container {
+   padding-top: 160px;
 }
