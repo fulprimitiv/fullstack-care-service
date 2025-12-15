@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActionCard } from '../../components/home/ActionCard/ActionCard';
+import { QuickActions } from '../../components/home/QuickActions/QuickActions';
 import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
@@ -22,6 +23,16 @@ export const HomePage: React.FC = () => {
 				Даже небольшая помощь может значительно улучшить чью-то жизнь."
 				buttonText="Стать волонтёром"
 				variant="orange"
+			/>
+
+			<QuickActions
+				actions={[
+					{ icon: 'shop', label: 'Покупки' },
+					{ icon: 'cleaning', label: 'Уборка' },
+					{ icon: 'pharmacy', label: 'Аптека' },
+					{ icon: 'repair', label: 'Ремонт' },
+					{ icon: 'walk', label: 'Прогулка' },
+				]}
 			/>
 		</div>
 	);
