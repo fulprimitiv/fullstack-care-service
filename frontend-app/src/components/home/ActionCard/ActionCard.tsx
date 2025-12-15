@@ -2,7 +2,7 @@ import React from 'react';
 import './ActionCard.scss';
 
 interface ActionCardProps {
-	icon: 'question' | 'care';
+	icon: 'question' | 'care' | 'list';
 	title: string;
 	description: string;
 	buttonText: string;
