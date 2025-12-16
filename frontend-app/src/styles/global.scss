@@ -1,9 +1,9 @@
-@use "./normalize" as *;
-@use "./fonts" as *;
-@use "./variables" as *;
+@use './normalize' as *;
+@use './fonts' as *;
+@use './variables' as *;
 
 body {
-   font-family: "SegoeUI", Arial, sans-serif;
+   font-family: 'SegoeUI', Arial, sans-serif;
    background-color: $bg-primary;
    color: $color-primary;
    min-height: 100%;
