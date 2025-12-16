@@ -1,14 +1,7 @@
 import React from 'react';
 import './QuickActions.scss';
+import type { QuickActionsProps } from '../../../shared/types/ordersTypes';
 
-interface QuickAction {
-   icon: string;
-   label: string;
-}
-
-interface QuickActionsProps {
-   actions: QuickAction[];
-}
 
 export const QuickActions: React.FC<QuickActionsProps> = ({ actions }) => {
    return (

@@ -1,13 +1,6 @@
 import React from 'react';
 import './ActionCard.scss';
-
-interface ActionCardProps {
-   icon: 'question' | 'care' | 'list';
-   title: string;
-   description: string;
-   buttonText: string;
-   variant: 'green' | 'orange';
-}
+import type { ActionCardProps } from '../../../shared/types/ordersTypes';
 
 export const ActionCard: React.FC<ActionCardProps> = ({
    icon,

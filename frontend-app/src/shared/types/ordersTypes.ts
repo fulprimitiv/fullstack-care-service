@@ -10,3 +10,20 @@ export interface OrderProps {
    volunteer?: string;
    status: OrderStatus;
 }
+
+export interface ActionCardProps {
+   icon: 'question' | 'care' | 'list';
+   title: string;
+   description: string;
+   buttonText: string;
+   variant: 'green' | 'orange';
+}
+
+export interface QuickAction {
+   icon: string;
+   label: string;
+}
+
+export interface QuickActionsProps {
+   actions: QuickAction[];
+}
