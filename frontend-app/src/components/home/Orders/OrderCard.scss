@@ -1,0 +1,110 @@
+@import '../../../styles/variables';
+
+.order-card {
+   background: $bg-secondary;
+   padding: 20px;
+   border-left: 4px solid $color-accent-success;
+   border-radius: 0px 12px 12px 0px;
+   display: flex;
+   align-items: flex-start;
+   flex-direction: column;
+   gap: 20px;
+
+   &__title {
+      color: $color-primary;
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 8px;
+   }
+
+   &__meta {
+      margin: 0 0 12px 0;
+      list-style: none;
+   }
+
+   &__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      line-height: 25.6px;
+      color: $color-secondary;
+   }
+
+   &__icon {
+      width: 16px;
+      height: 16px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+
+      &--address {
+         background-image: url('../../../../public/images/svg/grey/place.svg');
+      }
+
+      &--time {
+         background-image: url('../../../../public/images/svg/grey/time.svg');
+      }
+
+      &--volunteer {
+         background-image: url('../../../../public/images/svg/grey/user.svg');
+      }
+   }
+
+   &__status {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 22.4px;
+
+      &--active {
+         background: $bg-progress;
+         color: $color-accent-orange-dark;
+      }
+
+      &--searching {
+         background: $bg-search;
+         color: $color-accent-primary;
+      }
+
+      &--completed {
+         background: $bg-success;
+         color: $color-accent-success;
+      }
+   }
+
+   &__actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+   }
+
+   &__btn {
+      height: 50px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22px;
+      border: 2px solid $color-accent-success;
+      background: transparent;
+      color: $color-accent-success;
+      cursor: pointer;
+
+      &--primary {
+         background: $color-accent-success;
+         color: $bg-primary;
+      }
+
+      transition:
+         transform 0.15s ease,
+         box-shadow 0.15s ease;
+
+      &:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 4px 12px $bg-image-overlay;
+      }
+   }
+}

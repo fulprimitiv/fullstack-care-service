@@ -1,0 +1,53 @@
+@import '../../../styles/variables';
+
+.orders {
+   padding: 20px;
+   width: 1160px;
+   box-sizing: border-box;
+   border-left: 4px solid $color-accent-success;
+   border-radius: 12px;
+   box-shadow: 0px 4px 12px 0px $bg-image-overlay;
+   background: $bg-primary;
+
+   &__question {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+   }
+
+   &__icon {
+      width: 22px;
+      height: 22px;
+
+      &--active {
+         background: url('../../../../public/images/svg/green/loading.svg') no-repeat center;
+      }
+
+      &--completed {
+         background: url('../../../../public/images/svg/green/done.svg') no-repeat center;
+      }
+
+      &--all {
+         background: url('../../../../public/images/svg/green/list.svg') no-repeat center;
+      }
+   }
+
+   &__title {
+      font-size: 22px;
+      font-weight: 700;
+      color: $color-accent-success;
+   }
+
+   &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+   }
+}
+
+@media (max-width: 1200px) {
+   .orders {
+      width: 95%;
+   }
+}
