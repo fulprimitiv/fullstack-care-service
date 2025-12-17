@@ -21,11 +21,10 @@ export const ProfileStats: React.FC<Props> = ({
 		</div>
 
 		<ul className="profile-card__list">
-			<li>Выполнено заказов: <b>{completed}</b></li>
-			<li>Активных заказов: <b>{active}</b></li>
-			<li>На сервисе с: <b>{since}</b></li>
-			<li>Рейтинг: <b>{rating} / 5</b></li>
+			<li><span>Выполнено заказов: </span> {completed}</li>
+			<li><span>Активных заказов: </span> {active}</li>
+			<li><span>На сервисе с: </span> {since}</li>
+			<li><span>Рейтинг: </span> {rating}</li>
 		</ul>
-
 	</div>
 );
