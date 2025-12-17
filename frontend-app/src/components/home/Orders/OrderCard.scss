@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@use "../../../styles/variables" as *;
 
 .order-card {
    background: $bg-secondary;
@@ -39,15 +39,15 @@
       background-size: contain;
 
       &--address {
-         background-image: url('../../../../public/images/svg/grey/place.svg');
+         background-image: url("../../../../public/images/svg/grey/place.svg");
       }
 
       &--time {
-         background-image: url('../../../../public/images/svg/grey/time.svg');
+         background-image: url("../../../../public/images/svg/grey/time.svg");
       }
 
       &--volunteer {
-         background-image: url('../../../../public/images/svg/grey/user.svg');
+         background-image: url("../../../../public/images/svg/grey/user.svg");
       }
    }
 

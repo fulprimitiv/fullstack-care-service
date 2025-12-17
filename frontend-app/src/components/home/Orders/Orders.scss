@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@use "../../../styles/variables" as *;
 
 .orders {
    padding: 20px;
@@ -21,15 +21,15 @@
       height: 22px;
 
       &--active {
-         background: url('../../../../public/images/svg/green/loading.svg') no-repeat center;
+         background: url("../../../../public/images/svg/green/loading.svg") no-repeat center;
       }
 
       &--completed {
-         background: url('../../../../public/images/svg/green/done.svg') no-repeat center;
+         background: url("../../../../public/images/svg/green/done.svg") no-repeat center;
       }
 
       &--all {
-         background: url('../../../../public/images/svg/green/list.svg') no-repeat center;
+         background: url("../../../../public/images/svg/green/list.svg") no-repeat center;
       }
    }
 
