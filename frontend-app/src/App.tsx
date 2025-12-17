@@ -3,6 +3,7 @@ import { Header } from './components/global/Header/Header';
 import { Navigation } from './components/global/Navigation/Navigation';
 import { HomePage } from './pages/HomePage/HomePage';
 import { OrdersPage } from './pages/OrdersPage/OrdersPage';
+import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 
 export function App() {
    return (
@@ -13,7 +14,7 @@ export function App() {
             <Routes>
                <Route path="/" element={<Navigate to="/list" replace />} />
                <Route path="/list" element={<HomePage />} />
-               <Route path="/profile" element={<span> профиль </span>} />
+               <Route path="/profile" element={<ProfilePage />} />
                <Route path="/my-orders" element={<OrdersPage />} />
             </Routes>
          </div>

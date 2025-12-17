@@ -1,0 +1,46 @@
+@use "../../../styles/variables" as *;
+
+.profile-header {
+	border-radius: 12px;
+	background: linear-gradient(135deg, rgba(46, 125, 50, 1), rgba(27, 94, 32, 1) 100%);
+	height: 247px;
+	width: 1160px;
+	padding: 32px 24px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: $color-inverse;
+
+	&__avatar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 100px;
+		height: 100px;
+		border: 4px solid $color-inverse;
+		border-radius: 50%;
+		background: $color-accent-success-light;
+		box-shadow: 0px 4px 12px 0px $bg-image-overlay;
+
+		font-size: 40px;
+		font-weight: 700;
+		line-height: 64px;
+		margin-bottom: 12px;
+	}
+
+	&__name {
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 38.4px;
+		letter-spacing: 0%;
+	}
+}
+
+@media (max-width: 1200px) {
+	.profile-header {
+		width: 95%;
+	}
+}

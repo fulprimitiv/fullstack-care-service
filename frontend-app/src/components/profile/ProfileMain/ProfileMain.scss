@@ -1,0 +1,64 @@
+@use "../../../styles/variables" as *;
+
+.profile-card {
+	width: 100%;
+	border-radius: 12px;
+	padding: 20px 20px 0 20px;
+	background: $bg-primary;
+	box-shadow: 0px 4px 12px 0px $bg-image-overlay;
+	border-left: 4px solid $color-accent-success;
+	box-sizing: border-box;
+
+	&__question {
+		display: flex;
+		margin-bottom: 20px;
+		gap: 10px;
+		align-items: center;
+	}
+
+	&__icon--stats {
+		background: url("../../../../public/images/svg/green/stats.svg") no-repeat center;
+		width: 22px;
+		height: 22px;
+	}
+
+	&__icon--profile {
+		width: 22px;
+		height: 22px;
+		background: url("../../../../public/images/svg/green/profile.svg") no-repeat center;
+	}
+
+	&__title {
+		font-size: 22px;
+		font-weight: 700;
+		line-height: 35.2px;
+		letter-spacing: 0%;
+		color: $color-accent-success;
+	}
+
+	&__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			margin-bottom: 20px;
+			color: $color-secondary;
+			font-size: 17px;
+			font-weight: 400;
+			line-height: 27.2px;
+			letter-spacing: 0%;
+			text-align: left;
+
+			span {
+				color: $color-light;
+				color: $color-secondary;
+				font-size: 17px;
+				font-weight: 700;
+				line-height: 27.2px;
+				letter-spacing: 0%;
+				text-align: left;
+			}
+		}
+	}
+}
