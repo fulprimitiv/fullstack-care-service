@@ -7,7 +7,7 @@ import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 import { RegistrationPage } from './pages/AuthPage/RegistrationPage';
 import { LoginPage } from './pages/AuthPage/LoginPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-
+import { ProtectedRoute } from './components/routing/ProtectedRoute';
 
 export function App() {
    return (
@@ -23,13 +23,23 @@ export function App() {
                <Route path="/auth/login" element={<LoginPage />} />
                <Route path="/auth/registration" element={<RegistrationPage />} />
 
-               <Route path="/profile" element={<ProfilePage />} />
+               <Route
+                  path="/profile"
+                  element={
+                     <ProtectedRoute>
+                        <ProfilePage />
+                     </ProtectedRoute>
+                  }
+               />
 
-               <Route path="/my-orders" element={<OrdersPage />} />
-
-               {/* <Route path="/my-orders/:id" element={<OrderDetailsPage />} />
-               <Route path="/my-orders/:id/edit" element={<EditOrderPage />} />
-               <Route path="/orders/new" element={<CreateOrderPage />} /> */}
+               <Route
+                  path="/my-orders"
+                  element={
+                     <ProtectedRoute>
+                        <OrdersPage />
+                     </ProtectedRoute>
+                  }
+               />
 
                <Route path="/404" element={<NotFoundPage />} />
                <Route path="*" element={<Navigate to="/404" replace />} />
