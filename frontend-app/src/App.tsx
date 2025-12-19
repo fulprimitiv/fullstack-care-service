@@ -23,9 +23,9 @@ export function App() {
                <Route path="/auth/login" element={<LoginPage />} />
                <Route path="/auth/registration" element={<RegistrationPage />} />
 
-               <Route path="/profile/:id" element={<ProfilePage />} />
+               <Route path="/profile" element={<ProfilePage />} />
 
-               <Route path="/my-orders/:id" element={<OrdersPage />} />
+               <Route path="/my-orders" element={<OrdersPage />} />
 
                {/* <Route path="/my-orders/:id" element={<OrderDetailsPage />} />
                <Route path="/my-orders/:id/edit" element={<EditOrderPage />} />

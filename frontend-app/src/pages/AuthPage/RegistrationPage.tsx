@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { authApi } from '../../api/auth.service';
 import { formatPhone } from '../../shared/utils/formatPhone';
 import './AuthPage.scss';
 
 export const RegistrationPage: React.FC = () => {
+	const navigate = useNavigate();
+
 	const [form, setForm] = useState({
 		name: '',
 		email: '',
@@ -10,35 +14,47 @@ export const RegistrationPage: React.FC = () => {
 		phone: '',
 		birthDate: '',
 		address: '',
-		role: 'RECIPIENT',
+		role: 'RECIPIENT' as 'RECIPIENT' | 'VOLUNTEER',
 	});
 
-	const [phone, setPhone] = useState('');
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState<string | null>(null);
 
-	const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setPhone(formatPhone(e.target.value));
-	};
-
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+	) => {
 		setForm({ ...form, [e.target.name]: e.target.value });
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setForm({ ...form, phone: formatPhone(e.target.value) });
+	};
+
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
+		setError(null);
+		setLoading(true);
 
-		const payload = {
-			...form,
-			birthDate: new Date(form.birthDate).toISOString(),
-		};
+		try {
+			await authApi.signUp({
+				...form,
+				birthDate: new Date(form.birthDate).toISOString(),
+			});
 
-		console.log('REGISTER', payload);
-		// axios /auth/sign-up
+			navigate('/auth/login');
+		} catch (err) {
+			setError('Ошибка регистрации. Проверьте данные.');
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	return (
 		<div className="auth-page">
 			<form className="auth-page__form" onSubmit={handleSubmit}>
 				<h1 className="auth-page__title">Регистрация</h1>
+
+				{error && <div className="auth-page__error">{error}</div>}
 
 				<div className="auth-page__roles">
 					<button
@@ -63,75 +79,43 @@ export const RegistrationPage: React.FC = () => {
 				</div>
 
 				<label className="auth-page__field">
-					Как Вас зовут? *
-					<input
-						name="name"
-						value={form.name}
-						onChange={handleChange}
-						placeholder="Имя Фамилия"
-						required
-					/>
+					Имя *
+					<input name="name" value={form.name} onChange={handleChange} required />
 				</label>
 
 				<label className="auth-page__field">
 					Email *
-					<input
-						type="email"
-						name="email"
-						value={form.email}
-						onChange={handleChange}
-						placeholder="example@mail.com"
-						required
-					/>
+					<input type="email" name="email" value={form.email} onChange={handleChange} required />
 				</label>
 
 				<label className="auth-page__field">
 					Пароль *
-					<input
-						type="password"
-						name="password"
-						placeholder="•••••••"
-						value={form.password}
-						onChange={handleChange}
-						required
-					/>
+					<input type="password" name="password" value={form.password} onChange={handleChange} required />
 				</label>
 
 				<label className="auth-page__field">
 					Телефон *
 					<input
 						type="tel"
-						placeholder="+7 (___) ___-__-__"
-						value={phone}
+						value={form.phone}
 						onChange={handlePhoneChange}
+						placeholder="+7 (___) ___-__-__"
 						required
 					/>
 				</label>
 
 				<label className="auth-page__field">
 					Дата рождения *
-					<input
-						type="date"
-						name="birthDate"
-						value={form.birthDate}
-						onChange={handleChange}
-						required
-					/>
+					<input type="date" name="birthDate" value={form.birthDate} onChange={handleChange} required />
 				</label>
 
 				<label className="auth-page__field">
 					Адрес *
-					<input
-						name="address"
-						value={form.address}
-						onChange={handleChange}
-						placeholder="ул. Мира, 28"
-						required
-					/>
+					<input name="address" value={form.address} onChange={handleChange} required />
 				</label>
 
-				<button type="submit" className="auth-page__btn">
-					Зарегистрироваться
+				<button type="submit" className="auth-page__btn" disabled={loading}>
+					{loading ? 'Регистрация...' : 'Зарегистрироваться'}
 				</button>
 			</form>
 		</div>

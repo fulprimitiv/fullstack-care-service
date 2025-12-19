@@ -1,26 +1,38 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { authApi } from '../../api/auth.service';
 import './AuthPage.scss';
 
 export const LoginPage: React.FC = () => {
+	const navigate = useNavigate();
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState<string | null>(null);
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
+		setError(null);
+		setLoading(true);
 
-		const payload = {
-			email,
-			password,
-		};
-
-		console.log('LOGIN', payload);
-		// axios /auth/sign-in
+		try {
+			const { token } = await authApi.signIn({ email, password });
+			localStorage.setItem('token', token);
+			navigate('/list');
+		} catch (err) {
+			setError('Неверный email или пароль');
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	return (
 		<div className="auth-page">
 			<form className="auth-page__form" onSubmit={handleSubmit}>
 				<h1 className="auth-page__title">Вход в аккаунт</h1>
+
+				{error && <div className="auth-page__error">{error}</div>}
 
 				<label className="auth-page__field">
 					Email
@@ -42,8 +54,8 @@ export const LoginPage: React.FC = () => {
 					/>
 				</label>
 
-				<button type="submit" className="auth-page__btn">
-					Войти
+				<button type="submit" className="auth-page__btn" disabled={loading}>
+					{loading ? 'Вход...' : 'Войти'}
 				</button>
 			</form>
 		</div>
