@@ -9,7 +9,7 @@ export const NotFoundPage: React.FC = () => {
 				<div className="not-found__code">404</div>
 				<h1 className="not-found__title">Страница не найдена</h1>
 				<p className="not-found__text">
-					Возможно, страница была удалена или вы перешли по неверной ссылке.
+					Возможно, страница была удалена или вы не зарегистрировались на платформе.
 				</p>
 
 				<Link to="/list" className="not-found__btn">

@@ -25,7 +25,7 @@ export const Navigation: React.FC = () => {
             to="/profile"
             className={`navigation__link ${pathname === '/profile' ? 'navigation__link--active' : ''}`}
          >
-            Личный кабинет
+            Профиль
          </Link>
       </nav>
    );
