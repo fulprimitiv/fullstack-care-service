@@ -2,15 +2,15 @@ import React from 'react';
 import './ProfileMain.scss';
 
 interface Props {
-	phone: string;
-	address: string;
+	phone: string | undefined;
+	// address: string | undefined;
 	birthDate: string;
-	email: string;
+	email: string | undefined;
 }
 
 export const ProfileInfo: React.FC<Props> = ({
 	phone,
-	address,
+	// address,
 	birthDate,
 	email,
 }) => (
@@ -22,7 +22,7 @@ export const ProfileInfo: React.FC<Props> = ({
 
 		<ul className="profile-card__list">
 			<li><span>Телефон:</span> {phone}</li>
-			<li><span>Адрес:</span> {address}</li>
+			{/* <li><span>Адрес:</span> {address}</li> */}
 			<li><span>Дата рождения:</span> {birthDate}</li>
 			<li><span>Эл. почта:</span> {email}</li>
 		</ul>

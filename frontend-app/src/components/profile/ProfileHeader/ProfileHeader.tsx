@@ -2,7 +2,7 @@ import React from 'react';
 import './ProfileHeader.scss';
 
 interface Props {
-	name: string;
+	name: string | undefined;
 	initials: string;
 }
 

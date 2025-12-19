@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { authApi } from '../../api/auth.service';
+import { useAuth } from '../../shared/hooks/useAuth';
 import './AuthPage.scss';
 
 export const LoginPage: React.FC = () => {
 	const navigate = useNavigate();
+	const { login } = useAuth();
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -17,10 +18,9 @@ export const LoginPage: React.FC = () => {
 		setLoading(true);
 
 		try {
-			const { token } = await authApi.signIn({ email, password });
-			localStorage.setItem('token', token);
+			await login({ email, password });
 			navigate('/list');
-		} catch (err) {
+		} catch {
 			setError('Неверный email или пароль');
 		} finally {
 			setLoading(false);
@@ -54,7 +54,11 @@ export const LoginPage: React.FC = () => {
 					/>
 				</label>
 
-				<button type="submit" className="auth-page__btn" disabled={loading}>
+				<button
+					type="submit"
+					className="auth-page__btn"
+					disabled={loading}
+				>
 					{loading ? 'Вход...' : 'Войти'}
 				</button>
 			</form>

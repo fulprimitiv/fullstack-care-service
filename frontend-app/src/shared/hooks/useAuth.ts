@@ -9,7 +9,7 @@ export const useAuth = () => {
 	const login = async (data: SignInRequest) => {
 		const res = await authApi.signIn(data);
 		localStorage.setItem('token', res.token);
-		window.location.reload();
+		window.location.href = '/list';
 	};
 
 	const register = async (data: CreateUserCommand) => {

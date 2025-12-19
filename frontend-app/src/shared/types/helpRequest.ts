@@ -7,10 +7,8 @@ export interface HelpRequest {
 	address: string;
 	requestDate: string;
 	recipientId: number;
-
 	volunteerId?: number;
 	status: HelpRequestStatus;
-
 	rating?: number;
 	comment?: string;
 }

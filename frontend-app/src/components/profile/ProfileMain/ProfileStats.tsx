@@ -5,14 +5,14 @@ interface Props {
 	completed: number;
 	active: number;
 	since: string;
-	rating: number;
+	// rating: number;
 }
 
 export const ProfileStats: React.FC<Props> = ({
 	completed,
 	active,
 	since,
-	rating,
+	// rating,
 }) => (
 	<div className="profile-card">
 		<div className="profile-card__question">
@@ -24,7 +24,7 @@ export const ProfileStats: React.FC<Props> = ({
 			<li><span>Выполнено заказов: </span> {completed}</li>
 			<li><span>Активных заказов: </span> {active}</li>
 			<li><span>На сервисе с: </span> {since}</li>
-			<li><span>Рейтинг: </span> {rating}</li>
+			{/* <li><span>Рейтинг: </span> {rating}</li> */}
 		</ul>
 	</div>
 );
