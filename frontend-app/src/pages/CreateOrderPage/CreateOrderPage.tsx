@@ -10,7 +10,7 @@ export const CreateOrderPage: React.FC = () => {
 	const { userId } = useAuth();
 
 	const [form, setForm] = useState({
-		type: 'SHOPPING' as HelpRequestType, // fix
+		type: 'SHOPPING' as HelpRequestType,
 		description: '',
 		address: '',
 		date: '',

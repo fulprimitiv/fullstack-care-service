@@ -8,6 +8,7 @@
    border-radius: 12px;
    box-shadow: 0px 4px 12px 0px $bg-image-overlay;
    background: $bg-primary;
+   scroll-margin-top: 180px;
 
    &__question {
       display: flex;

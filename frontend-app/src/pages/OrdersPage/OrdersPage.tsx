@@ -1,19 +1,22 @@
 import React from 'react';
 import { ActionCard } from '../../components/home/ActionCard/ActionCard';
 import { Orders } from '../../components/home/Orders/Orders';
+import { useAuth } from '../../shared/hooks/useAuth';
 import './OrdersPage.scss';
 
 export const OrdersPage: React.FC = () => {
+   const { role } = useAuth();
    return (
       <div className="orders-page">
-         <ActionCard
+         {role === 'RECIPIENT' && <ActionCard
             icon="list"
             title="Мои заказы"
             description="Здесь вы можете управлять своими заявками на помощь: 
 				создавать новые, отслеживать активные и просматривать завершенные."
             buttonText="Создать новый заказ"
             variant="green"
-         />
+         />}
+
 
          <Orders
             name="active"

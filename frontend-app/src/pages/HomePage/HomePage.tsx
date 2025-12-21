@@ -1,13 +1,15 @@
 import React from 'react';
 import { ActionCard } from '../../components/home/ActionCard/ActionCard';
 import { QuickActions } from '../../components/home/QuickActions/QuickActions';
-import './HomePage.scss';
 import { Orders } from '../../components/home/Orders/Orders';
+import { useAuth } from '../../shared/hooks/useAuth';
+import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
+   const { isAuth, role } = useAuth();
    return (
       <div className="home-page">
-         <ActionCard
+         {(!isAuth || role === 'RECIPIENT') && <ActionCard
             icon="question"
             title="Нужна помощь?"
             description="Опишите, какая помощь вам требуется, и волонтеры откликнутся. 
@@ -15,15 +17,16 @@ export const HomePage: React.FC = () => {
             buttonText="Создать заявку на помощь"
             variant="green"
          />
+         }
 
-         <ActionCard
+         {(!isAuth || role === 'VOLUNTEER') && <ActionCard
             icon="care"
             title="Хочу помочь"
             description="Станьте волонтером и помогайте пожилым людям в вашем районе. 
 				Даже небольшая помощь может значительно улучшить чью-то жизнь."
-            buttonText="Стать волонтёром"
-            variant="orange"
-         />
+            buttonText="Найти заявку"
+            variant={isAuth ? "green" : "orange"}
+         />}
 
          <QuickActions
             actions={[
@@ -44,6 +47,38 @@ export const HomePage: React.FC = () => {
                   address: 'ул. Ленина, 15',
                   date: 'Сегодня',
                   time: '14:00',
+                  status: 'searching',
+               },
+               {
+                  id: 2,
+                  title: 'Вынести мусор',
+                  address: 'ул. Мира, 28',
+                  date: 'Завтра',
+                  time: '10:00',
+                  status: 'searching',
+               },
+               {
+                  id: 2,
+                  title: 'Вынести мусор',
+                  address: 'ул. Мира, 28',
+                  date: 'Завтра',
+                  time: '10:00',
+                  status: 'searching',
+               },
+               {
+                  id: 2,
+                  title: 'Вынести мусор',
+                  address: 'ул. Мира, 28',
+                  date: 'Завтра',
+                  time: '10:00',
+                  status: 'searching',
+               },
+               {
+                  id: 2,
+                  title: 'Вынести мусор',
+                  address: 'ул. Мира, 28',
+                  date: 'Завтра',
+                  time: '10:00',
                   status: 'searching',
                },
                {
