@@ -18,6 +18,10 @@
 		gap: 20px;
 	}
 
+	&__error {
+		color: $color-accent-red;
+	}
+
 	&__title {
 		font-size: 28px;
 		font-weight: 700;

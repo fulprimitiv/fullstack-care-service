@@ -18,5 +18,5 @@ export interface CreateHelpRequestCommand {
 	description: string;
 	address: string;
 	requestDate: string;
-	recipientId: number;
+	recipientId: number | undefined;
 }

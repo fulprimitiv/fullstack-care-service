@@ -1,0 +1,141 @@
+@import "../../styles/variables";
+
+.order-container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 60px 16px;
+
+	&__form {
+		width: 100%;
+		max-width: 752px;
+		background: $bg-primary;
+		padding: 32px;
+		border-radius: 16px;
+		box-shadow: 0 12px 32px $bg-image-overlay;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__title {
+		font-size: 28px;
+		font-weight: 700;
+		color: $color-accent-success;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		font-size: 14px;
+		color: $color-primary;
+
+		input,
+		textarea {
+			padding: 14px 16px;
+			border-radius: 10px;
+			border: 1px solid $bg-form;
+			font-size: 15px;
+
+			&:focus {
+				outline: none;
+				border-color: $color-accent-success;
+			}
+		}
+
+		textarea {
+			resize: none;
+			height: 150px;
+		}
+	}
+
+	&__btn {
+		margin-top: 16px;
+		padding: 16px;
+		border-radius: 12px;
+		border: none;
+		background: $color-accent-success;
+		color: $color-inverse;
+		font-size: 16px;
+		font-weight: 700;
+		cursor: pointer;
+
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease;
+
+		&:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px $bg-image-overlay;
+		}
+	}
+}
+
+.radio-list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.radio-card {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 16px 18px;
+	border: 1px solid $bg-form;
+	border-radius: 10px;
+	cursor: pointer;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+	background: $bg-primary;
+
+	&:hover {
+		border-color: $color-accent-success;
+	}
+
+	input {
+		display: none;
+	}
+
+	&__circle {
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		border: 2px solid $color-accent-success;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+
+		&::after {
+			content: "";
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: $color-accent-success;
+			opacity: 0;
+			transition: opacity 0.15s ease;
+		}
+	}
+
+	&__label {
+		font-size: 16px;
+		color: $color-secondary;
+	}
+
+	input:checked + .radio-card__circle::after {
+		opacity: 1;
+	}
+
+	input:checked ~ .radio-card__label {
+		font-weight: 600;
+		color: $color-primary;
+	}
+
+	input:checked ~ & {
+		border-color: $color-accent-success;
+		box-shadow: 0 0 0 1px $bg-image-overlay;
+	}
+}

@@ -6,6 +6,7 @@ import { OrdersPage } from './pages/OrdersPage/OrdersPage';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 import { RegistrationPage } from './pages/AuthPage/RegistrationPage';
 import { LoginPage } from './pages/AuthPage/LoginPage';
+import { CreateOrderPage } from './pages/CreateOrderPage/CreateOrderPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ProtectedRoute } from './components/routing/ProtectedRoute';
 
@@ -37,6 +38,15 @@ export function App() {
                   element={
                      <ProtectedRoute>
                         <OrdersPage />
+                     </ProtectedRoute>
+                  }
+               />
+
+               <Route
+                  path="/create-order"
+                  element={
+                     <ProtectedRoute>
+                        <CreateOrderPage />
                      </ProtectedRoute>
                   }
                />
