@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { helpRequestApi } from '../../api/helpRequest.service';
 import type { HelpRequestType } from '../../shared/types/enums';
 import { useAuth } from '../../shared/hooks/useAuth';
 import './CreateOrderPage.scss';
 
 export const CreateOrderPage: React.FC = () => {
+   const { state } = useLocation() as { state?: { type?: HelpRequestType } };
    const navigate = useNavigate();
    const { userId } = useAuth();
 
    const [form, setForm] = useState({
-      type: 'SHOPPING' as HelpRequestType,
+      type: state?.type ?? 'SHOPPING',
       description: '',
       address: '',
       date: '',
@@ -64,8 +65,8 @@ export const CreateOrderPage: React.FC = () => {
                      { value: 'SHOPPING', label: 'Покупки' },
                      { value: 'CLEANING', label: 'Уборка' },
                      { value: 'PHARMACY', label: 'Аптека' },
-                     { value: 'COMMUNICATION', label: 'Общение' },
                      { value: 'REPAIR', label: 'Ремонт' },
+                     { value: 'WALK', label: 'Прогулка' },
                   ].map((item) => (
                      <label key={item.value} className="radio-card">
                         <input

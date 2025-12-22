@@ -1,4 +1,4 @@
-@use '../../../styles/variables' as *;
+@use "../../../styles/variables" as *;
 
 .quick-actions {
    max-width: 1160px;
@@ -10,6 +10,11 @@
       font-weight: 700;
       line-height: 38.4px;
       margin-bottom: 15px;
+   }
+
+   &__item--active {
+      border: 2px solid #4caf50;
+      background: #f1f8f4;
    }
 
    &__list {
@@ -43,24 +48,24 @@
       height: 32px;
       margin-bottom: 15px;
 
-      &--shop {
-         background: url('../../../../public/images/svg/fast-actions/shop.svg') no-repeat center;
+      &--SHOPPING {
+         background: url("../../../../public/images/svg/fast-actions/shop.svg") no-repeat center;
       }
 
-      &--cleaning {
-         background: url('../../../../public/images/svg/fast-actions/cleaning.svg') no-repeat center;
+      &--CLEANING {
+         background: url("../../../../public/images/svg/fast-actions/cleaning.svg") no-repeat center;
       }
 
-      &--pharmacy {
-         background: url('../../../../public/images/svg/fast-actions/pharmacy.svg') no-repeat center;
+      &--PHARMACY {
+         background: url("../../../../public/images/svg/fast-actions/pharmacy.svg") no-repeat center;
       }
 
-      &--repair {
-         background: url('../../../../public/images/svg/fast-actions/repair.svg') no-repeat center;
+      &--REPAIR {
+         background: url("../../../../public/images/svg/fast-actions/repair.svg") no-repeat center;
       }
 
-      &--walk {
-         background: url('../../../../public/images/svg/fast-actions/walk.svg') no-repeat center;
+      &--WALK {
+         background: url("../../../../public/images/svg/fast-actions/walk.svg") no-repeat center;
       }
    }
 

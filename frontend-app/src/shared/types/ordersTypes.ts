@@ -1,3 +1,4 @@
+import type { HelpRequestType } from './enums'
 export type OrderStatus = 'active' | 'searching' | 'completed';
 export type OrderName = 'all' | 'active' | 'completed';
 
@@ -7,8 +8,8 @@ export interface OrderProps {
    address: string;
    date: string;
    time: string;
-   volunteer?: string;
    status: OrderStatus;
+   type: HelpRequestType;
 }
 
 export interface ActionCardProps {
@@ -20,10 +21,12 @@ export interface ActionCardProps {
 }
 
 export interface QuickAction {
-   icon: string;
+   icon: HelpRequestType;
    label: string;
 }
 
 export interface QuickActionsProps {
-   actions: QuickAction[];
+   actions: { icon: HelpRequestType; label: string }[];
+   onSelectType: (type: HelpRequestType) => void;
+   selectedType: HelpRequestType | null;
 }
