@@ -4,64 +4,60 @@ import { useAuth } from '../../shared/hooks/useAuth';
 import './AuthPage.scss';
 
 export const LoginPage: React.FC = () => {
-	const navigate = useNavigate();
-	const { login } = useAuth();
+   const navigate = useNavigate();
+   const { login } = useAuth();
 
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<string | null>(null);
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
+   const [loading, setLoading] = useState(false);
+   const [error, setError] = useState<string | null>(null);
 
-	const handleSubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
-		setError(null);
-		setLoading(true);
+   const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      setError(null);
+      setLoading(true);
 
-		try {
-			await login({ email, password });
-			navigate('/list');
-		} catch {
-			setError('Неверный email или пароль');
-		} finally {
-			setLoading(false);
-		}
-	};
+      try {
+         await login({ email, password });
+         navigate('/list');
+      } catch {
+         setError('Неверный email или пароль');
+      } finally {
+         setLoading(false);
+      }
+   };
 
-	return (
-		<div className="auth-page">
-			<form className="auth-page__form" onSubmit={handleSubmit}>
-				<h1 className="auth-page__title">Вход в аккаунт</h1>
+   return (
+      <div className="auth-page">
+         <form className="auth-page__form" onSubmit={handleSubmit}>
+            <h1 className="auth-page__title">Вход в аккаунт</h1>
 
-				{error && <div className="auth-page__error">{error}</div>}
+            {error && <div className="auth-page__error">{error}</div>}
 
-				<label className="auth-page__field">
-					Email
-					<input
-						type="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</label>
+            <label className="auth-page__field">
+               Email
+               <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+               />
+            </label>
 
-				<label className="auth-page__field">
-					Пароль
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</label>
+            <label className="auth-page__field">
+               Пароль
+               <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+               />
+            </label>
 
-				<button
-					type="submit"
-					className="auth-page__btn"
-					disabled={loading}
-				>
-					{loading ? 'Вход...' : 'Войти'}
-				</button>
-			</form>
-		</div>
-	);
+            <button type="submit" className="auth-page__btn" disabled={loading}>
+               {loading ? 'Вход...' : 'Войти'}
+            </button>
+         </form>
+      </div>
+   );
 };

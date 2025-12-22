@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../shared/hooks/useAuth';
 import { useUser } from '../../../shared/hooks/useUser';
-import { USER_ROLE } from '../../../shared/constants/UserRole'
+import { USER_ROLE } from '../../../shared/constants/UserRole';
 import { formatInitials } from '../../../shared/utils/formatInitials';
 
 import './Header.scss';

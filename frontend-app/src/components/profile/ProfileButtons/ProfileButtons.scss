@@ -1,48 +1,48 @@
-@use "../../../styles/variables" as *;
+@use '../../../styles/variables' as *;
 
 .buttons {
-	width: 1160px;
+   width: 1160px;
 
-	&__btn {
-		width: 100%;
-		height: 64px;
-		border-radius: 8px;
-		padding: 18px 30px 19px 30px;
-		margin-bottom: 24px;
+   &__btn {
+      width: 100%;
+      height: 64px;
+      border-radius: 8px;
+      padding: 18px 30px 19px 30px;
+      margin-bottom: 24px;
 
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
 
-		font-size: 18px;
-		font-weight: 700;
-		line-height: 24px;
-		letter-spacing: 0%;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0%;
 
-		transition:
-			transform 0.15s ease,
-			box-shadow 0.15s ease;
+      transition:
+         transform 0.15s ease,
+         box-shadow 0.15s ease;
 
-		&:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 4px 12px $bg-image-overlay;
-		}
+      &:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 4px 12px $bg-image-overlay;
+      }
 
-		&--edit {
-			background: $color-accent-success;
-			color: $color-inverse;
-		}
+      &--edit {
+         background: $color-accent-success;
+         color: $color-inverse;
+      }
 
-		&--out {
-			background: $color-accent-red-light;
-			color: $color-accent-red-dark;
-		}
-	}
+      &--out {
+         background: $color-accent-red-light;
+         color: $color-accent-red-dark;
+      }
+   }
 }
 
 @media (max-width: 1200px) {
-	.buttons {
-		width: 95%;
-	}
+   .buttons {
+      width: 95%;
+   }
 }

@@ -1,5 +1,4 @@
 export const formatDate = (dateStr: string | undefined): string => {
-
    if (dateStr !== undefined) {
       return new Date(dateStr).toLocaleDateString('ru-RU', {
          day: '2-digit',
@@ -7,5 +6,5 @@ export const formatDate = (dateStr: string | undefined): string => {
          year: 'numeric',
       });
    }
-   return "Дата не указана";
+   return 'Дата не указана';
 };

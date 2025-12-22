@@ -12,42 +12,40 @@ import { formatDate } from '../../shared/utils/formatDate';
 import './ProfilePage.scss';
 
 export const ProfilePage: React.FC = () => {
+   const { userId } = useAuth();
+   const { user } = useUser(userId);
 
-	const { userId } = useAuth();
-	const { user } = useUser(userId);
+   const { orders: activeOrders } = useUserOrders({
+      userId,
+      status: 'IN_PROGRESS',
+   });
 
-	const { orders: activeOrders } = useUserOrders({
-		userId,
-		status: 'IN_PROGRESS',
-	});
+   const { orders: completedOrders } = useUserOrders({
+      userId,
+      status: 'COMPLETED',
+   });
 
-	const { orders: completedOrders } = useUserOrders({
-		userId,
-		status: 'COMPLETED',
-	});
+   return (
+      <div className="profile-page">
+         <ProfileHeader name={user?.name} initials={formatInitials(user)} />
 
-	return (
+         <div className="profile-page__container">
+            <ProfileInfo
+               phone={user?.phone}
+               // address={user?.address}
+               birthDate={formatDate(user?.birthday)}
+               email={user?.email}
+            />
 
-		<div className="profile-page">
-			<ProfileHeader name={user?.name} initials={formatInitials(user)} />
+            <ProfileStats
+               completed={activeOrders.length}
+               active={completedOrders.length}
+               since={formatDate(user?.registeredAt)}
+               // rating={4.9}
+            />
+         </div>
 
-			<div className="profile-page__container">
-				<ProfileInfo
-					phone={user?.phone}
-					// address={user?.address}
-					birthDate={formatDate(user?.birthday)}
-					email={user?.email}
-				/>
-
-				<ProfileStats
-					completed={activeOrders.length}
-					active={completedOrders.length}
-					since={formatDate(user?.registeredAt)}
-				// rating={4.9}
-				/>
-			</div>
-
-			<ProfileButtons />
-		</div>
-	);
+         <ProfileButtons />
+      </div>
+   );
 };

@@ -1,55 +1,55 @@
-@import "../../styles/variables";
+@use '../../styles/variables' as *;
 
 .not-found {
-	min-height: calc(100vh - 300px);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 40px;
+   min-height: calc(100vh - 300px);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 40px;
 
-	&__content {
-		text-align: center;
-		max-width: 420px;
-	}
+   &__content {
+      text-align: center;
+      max-width: 420px;
+   }
 
-	&__code {
-		font-size: 96px;
-		font-weight: 700;
-		color: $color-accent-success;
-		line-height: 1;
-		margin-bottom: 12px;
-	}
+   &__code {
+      font-size: 96px;
+      font-weight: 700;
+      color: $color-accent-success;
+      line-height: 1;
+      margin-bottom: 12px;
+   }
 
-	&__title {
-		font-size: 24px;
-		font-weight: 700;
-		color: $color-primary;
-		margin-bottom: 12px;
-	}
+   &__title {
+      font-size: 24px;
+      font-weight: 700;
+      color: $color-primary;
+      margin-bottom: 12px;
+   }
 
-	&__text {
-		font-size: 16px;
-		color: $color-secondary;
-		margin-bottom: 24px;
-	}
+   &__text {
+      font-size: 16px;
+      color: $color-secondary;
+      margin-bottom: 24px;
+   }
 
-	&__btn {
-		display: inline-block;
-		padding: 12px 24px;
-		border-radius: 10px;
-		background: $color-accent-success;
-		color: $bg-primary;
-		text-decoration: none;
-		font-size: 16px;
-		font-weight: 600;
+   &__btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 10px;
+      background: $color-accent-success;
+      color: $bg-primary;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
 
-		transition:
-			transform 0.15s ease,
-			box-shadow 0.15s ease;
+      transition:
+         transform 0.15s ease,
+         box-shadow 0.15s ease;
 
-		&:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 4px 12px $bg-image-overlay;
-		}
-	}
+      &:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 4px 12px $bg-image-overlay;
+      }
+   }
 }

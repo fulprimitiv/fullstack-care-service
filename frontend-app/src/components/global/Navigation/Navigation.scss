@@ -1,4 +1,4 @@
-@use "../../../styles/variables" as *;
+@use '../../../styles/variables' as *;
 
 .navigation {
    position: fixed;
@@ -30,7 +30,7 @@
          font-weight: 700;
 
          &::after {
-            content: "";
+            content: '';
             position: absolute;
             left: 0;
             bottom: -1px;

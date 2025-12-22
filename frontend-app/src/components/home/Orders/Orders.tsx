@@ -16,7 +16,7 @@ const CARD_STATUS_LABEL: Record<OrderName, string> = {
 
 export const Orders: React.FC<Props> = ({ name, orders }) => {
    return (
-      <section className="orders" id='order-list'>
+      <section className="orders" id="order-list">
          <div className="orders__question">
             <div className={`orders__icon orders__icon--${name}`} />
             <h3 className="orders__title">{CARD_STATUS_LABEL[name]}</h3>

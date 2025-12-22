@@ -1,4 +1,4 @@
-@use "../../../styles/variables" as *;
+@use '../../../styles/variables' as *;
 
 .action-card {
    padding: 20px;
@@ -28,15 +28,15 @@
       height: 22px;
 
       &--question {
-         background: url("../../../../public/images/svg/green/question.svg") no-repeat center;
+         background: url('../../../../public/images/svg/green/question.svg') no-repeat center;
       }
 
       &--care {
-         background: url("../../../../public/images/svg/green/care.svg") no-repeat center;
+         background: url('../../../../public/images/svg/green/care.svg') no-repeat center;
       }
 
       &--list {
-         background: url("../../../../public/images/svg/green/my-list.svg") no-repeat center;
+         background: url('../../../../public/images/svg/green/my-list.svg') no-repeat center;
       }
    }
 

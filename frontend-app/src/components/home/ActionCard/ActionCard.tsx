@@ -45,6 +45,6 @@ export const ActionCard: React.FC<ActionCardProps> = ({
          >
             {buttonText}
          </button>
-      </div >
+      </div>
    );
 };

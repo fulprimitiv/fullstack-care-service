@@ -4,8 +4,8 @@ export const formatPhone = (value: string): string => {
    const normalized = digits.startsWith('7')
       ? digits.slice(1)
       : digits.startsWith('8')
-         ? digits.slice(1)
-         : digits;
+        ? digits.slice(1)
+        : digits;
 
    let result = '+7';
 

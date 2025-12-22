@@ -8,15 +8,16 @@ export const OrdersPage: React.FC = () => {
    const { role } = useAuth();
    return (
       <div className="orders-page">
-         {role === 'RECIPIENT' && <ActionCard
-            icon="list"
-            title="Мои заказы"
-            description="Здесь вы можете управлять своими заявками на помощь: 
+         {role === 'RECIPIENT' && (
+            <ActionCard
+               icon="list"
+               title="Мои заказы"
+               description="Здесь вы можете управлять своими заявками на помощь: 
 				создавать новые, отслеживать активные и просматривать завершенные."
-            buttonText="Создать новый заказ"
-            variant="green"
-         />}
-
+               buttonText="Создать новый заказ"
+               variant="green"
+            />
+         )}
 
          <Orders
             name="active"

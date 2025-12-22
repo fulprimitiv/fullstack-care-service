@@ -1,119 +1,119 @@
-@import "../../styles/variables";
+@use '../../styles/variables' as *;
 
 .auth-page {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	padding: 60px 16px;
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   padding: 60px 16px;
 
-	&__form {
-		width: 100%;
-		max-width: 752px;
-		background: $bg-primary;
-		padding: 32px;
-		border-radius: 16px;
-		box-shadow: 0 12px 32px $bg-image-overlay;
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	}
+   &__form {
+      width: 100%;
+      max-width: 752px;
+      background: $bg-primary;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px $bg-image-overlay;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+   }
 
-	&__error {
-		color: $color-accent-red;
-	}
+   &__error {
+      color: $color-accent-red;
+   }
 
-	&__title {
-		font-size: 28px;
-		font-weight: 700;
-		color: $color-accent-success;
-	}
+   &__title {
+      font-size: 28px;
+      font-weight: 700;
+      color: $color-accent-success;
+   }
 
-	&__roles {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 16px;
-	}
+   &__roles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+   }
 
-	&__role {
-		border-radius: 8px;
-		border: 2px solid $bg-form;
-		padding: 20px;
-		background: $bg-primary;
-		cursor: pointer;
+   &__role {
+      border-radius: 8px;
+      border: 2px solid $bg-form;
+      padding: 20px;
+      background: $bg-primary;
+      cursor: pointer;
 
-		transition: all 0.2s ease;
+      transition: all 0.2s ease;
 
-		&:hover {
-			border-color: $color-accent-success;
-		}
+      &:hover {
+         border-color: $color-accent-success;
+      }
 
-		&--active {
-			border-color: $color-accent-success;
-			background: $bg-active;
-		}
-	}
+      &--active {
+         border-color: $color-accent-success;
+         background: $bg-active;
+      }
+   }
 
-	&__role-icon {
-		font-size: 32px;
-		margin-bottom: 8px;
-	}
+   &__role-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+   }
 
-	&__role-title {
-		font-size: 18px;
-		font-weight: 700;
-		color: $color-primary;
-	}
+   &__role-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: $color-primary;
+   }
 
-	&__role-desc {
-		font-size: 14px;
-		color: $color-secondary;
-		margin-top: 4px;
-	}
+   &__role-desc {
+      font-size: 14px;
+      color: $color-secondary;
+      margin-top: 4px;
+   }
 
-	&__field {
-		display: flex;
-		flex-direction: column;
-		gap: 6px;
-		font-size: 14px;
-		color: $color-primary;
+   &__field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 14px;
+      color: $color-primary;
 
-		input {
-			padding: 14px 16px;
-			border-radius: 10px;
-			border: 1px solid $bg-form;
-			font-size: 15px;
+      input {
+         padding: 14px 16px;
+         border-radius: 10px;
+         border: 1px solid $bg-form;
+         font-size: 15px;
 
-			&:focus {
-				outline: none;
-				border-color: $color-accent-success;
-			}
-		}
-	}
+         &:focus {
+            outline: none;
+            border-color: $color-accent-success;
+         }
+      }
+   }
 
-	&__btn {
-		margin-top: 16px;
-		padding: 16px;
-		border-radius: 12px;
-		border: none;
-		background: $color-accent-success;
-		color: $color-inverse;
-		font-size: 16px;
-		font-weight: 700;
-		cursor: pointer;
+   &__btn {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      border: none;
+      background: $color-accent-success;
+      color: $color-inverse;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
 
-		transition:
-			transform 0.15s ease,
-			box-shadow 0.15s ease;
+      transition:
+         transform 0.15s ease,
+         box-shadow 0.15s ease;
 
-		&:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 4px 12px $bg-image-overlay;
-		}
-	}
+      &:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 4px 12px $bg-image-overlay;
+      }
+   }
 }
 
 @media (max-width: 480px) {
-	.auth-page__roles {
-		grid-template-columns: 1fr;
-	}
+   .auth-page__roles {
+      grid-template-columns: 1fr;
+   }
 }
