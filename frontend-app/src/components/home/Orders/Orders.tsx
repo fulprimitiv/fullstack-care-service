@@ -19,6 +19,7 @@ const CARD_STATUS_LABEL: Record<OrderName, string> = {
 };
 
 export const Orders: React.FC<Props> = ({ name, orders, onActionClick, respondingId }) => {
+   console.log()
    return (
       <section className="orders" id="order-list">
          <div className="orders__question">
@@ -27,14 +28,18 @@ export const Orders: React.FC<Props> = ({ name, orders, onActionClick, respondin
          </div>
 
          <div className="orders__list">
-            {orders.map((order) => (
-               <OrderCard
-                  key={order.id}
-                  order={order}
-                  onActionClick={onActionClick}
-                  isResponding={respondingId === order.id}
-               />
-            ))}
+            {orders.map((order) => {
+               console.log(order);
+               return (
+                  <OrderCard
+                     key={order.id}
+                     order={order}
+                     onActionClick={onActionClick}
+                     isResponding={respondingId === order.id}
+                     recipientId={order.recipientId}
+                  />
+               )
+            })}
          </div>
       </section>
    );

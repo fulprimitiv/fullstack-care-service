@@ -38,10 +38,10 @@ export const ProfilePage: React.FC = () => {
             />
 
             <ProfileStats
-               completed={activeOrders.length}
-               active={completedOrders.length}
+               active={activeOrders.length}
+               completed={completedOrders.length}
                since={formatDate(user?.registeredAt)}
-               // rating={4.9}
+            // rating={4.9}
             />
          </div>
 

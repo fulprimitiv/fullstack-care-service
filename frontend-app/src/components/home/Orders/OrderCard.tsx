@@ -7,10 +7,11 @@ interface Props {
    order: OrderProps;
    onActionClick: (action: OrderAction, orderId: number) => void;
    isResponding?: boolean;
+   recipientId?: number;
 }
 
-export const OrderCard: React.FC<Props> = ({ order, onActionClick, isResponding }) => {
-   const { role } = useAuth();
+export const OrderCard: React.FC<Props> = ({ order, onActionClick, isResponding, recipientId }) => {
+   const { role, userId } = useAuth();
    return (
       <div className={`order-card ${isResponding ? 'order-card--responding' : ''}`}>
          <div className="order-card__content">
@@ -33,7 +34,7 @@ export const OrderCard: React.FC<Props> = ({ order, onActionClick, isResponding 
             </span>
          </div>
 
-         {role === 'VOLUNTEER' && order.actions.length > 0 && (
+         {((recipientId === userId && role === 'RECIPIENT') || role === 'VOLUNTEER') && order.actions.length > 0 && (
             <div className="order-card__actions">
                {order.actions.map(action => (
                   <button

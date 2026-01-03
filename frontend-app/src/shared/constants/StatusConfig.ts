@@ -17,23 +17,23 @@ export const STATUS_CONFIG = {
 				{ label: 'Связаться', type: 'CONTACT', primary: true },
 				{ label: 'Отменить', type: 'CANCEL' },
 			],
-			RECIPIENT: [{ label: 'Связаться', type: 'CONTACT', primary: true }],
+			RECIPIENT: [
+				{ label: 'Связаться', type: 'CONTACT', primary: true },
+				{ label: 'Отменить', type: 'CANCEL' },
+			],
 		},
 	},
 
 	COMPLETED: {
 		statusLabel: 'Выполнено',
 		actions: {
-			VOLUNTEER: [],
-			RECIPIENT: [
-				{ label: 'Повторить заказ', type: 'REPEAT', primary: true },
-				{ label: 'Оставить отзыв', type: 'RATE' },
-			],
+			VOLUNTEER: [{ label: 'Оставить отзыв', type: 'RATE' }],
+			RECIPIENT: [{ label: 'Оставить отзыв', type: 'RATE' }],
 		},
 	},
 
 	CANCELLED: {
-		status: 'COMPLETED',
+		status: 'CANCELLED',
 		statusLabel: 'Отменено',
 		actions: {
 			RECIPIENT: [],
@@ -42,7 +42,7 @@ export const STATUS_CONFIG = {
 	},
 
 	EXPIRED: {
-		status: 'COMPLETED',
+		status: 'EXPIRED',
 		statusLabel: 'Истекло',
 		actions: {
 			RECIPIENT: [],

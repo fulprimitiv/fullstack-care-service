@@ -73,6 +73,12 @@
          background: $bg-success;
          color: $color-accent-success;
       }
+
+      &--EXPIRED,
+      &--CANCELLED {
+         background: $color-accent-red-light;
+         color: $color-accent-red-dark;
+      }
    }
 
    &__actions {

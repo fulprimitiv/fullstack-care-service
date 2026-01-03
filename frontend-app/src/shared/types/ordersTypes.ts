@@ -21,6 +21,7 @@ export interface OrderProps {
    address: string;
    date: string;
    time: string;
+   recipientId?: number;
    status: HelpRequestStatus;
    statusLabel: string;
    actions: readonly OrderAction[];
