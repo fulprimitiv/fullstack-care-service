@@ -5,21 +5,49 @@ import { Orders } from '../../components/home/Orders/Orders';
 import { useAuth } from '../../shared/hooks/useAuth';
 import type { HelpRequestType } from '../../shared/types/enums';
 import type { OrderProps } from '../../shared/types/ordersTypes';
+import { useOrderActions } from '../../shared/hooks/useOrderActions';
 import { helpRequestApi } from '../../api/helpRequest.service';
 import { getTitleByType } from '../../shared/utils/getTitleByType'
 import { STATUS_CONFIG } from '../../shared/constants/StatusConfig'
+import { OrderDetailsModal } from '../../components/modal/OrderDetailsModal';
+import type { HelpRequest } from '../../shared/types/helpRequest';
 import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
    const { isAuth, role } = useAuth();
    const [orders, setOrders] = useState<OrderProps[]>([]);
    const [selectedType, setSelectedType] = useState<HelpRequestType | null>(null);
+   const [modalOrder, setModalOrder] = useState<HelpRequest | null>(null);
+   const [respondingId, setRespondingId] = useState<number | null>(null);
+
+   const { handleOrderAction } = useOrderActions({
+      onShowDetails: (order) => setModalOrder(order),
+      onRespondStart: async (orderId: number) => {
+         setOrders(prev => prev.map(o => {
+            if (o.id === orderId) {
+               const newStatus = 'IN_PROGRESS' as const;
+               const config = STATUS_CONFIG[newStatus];
+               return {
+                  ...o,
+                  status: newStatus,
+                  statusLabel: config.statusLabel,
+               };
+            }
+            return o;
+         }));
+         setRespondingId(orderId);
+
+         await new Promise<void>(resolve => setTimeout(() => resolve(), 700));
+      },
+      onRespondEnd: () => {
+         setRespondingId(null);
+      }
+   });
 
    useEffect(() => {
       const fetchOrders = async () => {
          try {
             const response = await helpRequestApi.getAll();
-
             const mappedOrders: OrderProps[] = response.data.map(order => {
                const config = STATUS_CONFIG[order.status];
 
@@ -32,7 +60,7 @@ export const HomePage: React.FC = () => {
                      hour: '2-digit',
                      minute: '2-digit',
                   }),
-                  status: config.status,
+                  status: order.status,
                   statusLabel: config.statusLabel,
                   actions: config.actions[role as keyof typeof config.actions],
                   type: order.type,
@@ -94,7 +122,16 @@ export const HomePage: React.FC = () => {
             selectedType={selectedType}
          />
 
-         <Orders name="all" orders={filteredOrders} />
+         <Orders
+            name="all"
+            orders={filteredOrders}
+            onActionClick={handleOrderAction}
+            respondingId={respondingId}
+         />
+
+         {modalOrder && (
+            <OrderDetailsModal order={modalOrder} onClose={() => setModalOrder(null)} />
+         )}
       </div>
    );
 };

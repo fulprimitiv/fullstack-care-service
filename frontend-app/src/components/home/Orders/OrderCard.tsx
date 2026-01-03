@@ -1,16 +1,18 @@
 import React from 'react';
-import type { OrderProps } from '../../../shared/types/ordersTypes';
+import type { OrderProps, OrderAction } from '../../../shared/types/ordersTypes';
 import { useAuth } from '../../../shared/hooks/useAuth';
 import './OrderCard.scss';
 
 interface Props {
    order: OrderProps;
+   onActionClick: (action: OrderAction, orderId: number) => void;
+   isResponding?: boolean;
 }
 
-export const OrderCard: React.FC<Props> = ({ order }) => {
+export const OrderCard: React.FC<Props> = ({ order, onActionClick, isResponding }) => {
    const { role } = useAuth();
    return (
-      <div className="order-card">
+      <div className={`order-card ${isResponding ? 'order-card--responding' : ''}`}>
          <div className="order-card__content">
             <h3 className="order-card__title">{order.title}</h3>
 
@@ -33,12 +35,14 @@ export const OrderCard: React.FC<Props> = ({ order }) => {
 
          {role === 'VOLUNTEER' && order.actions.length > 0 && (
             <div className="order-card__actions">
-               {order.actions.map(({ label, primary }) => (
+               {order.actions.map(action => (
                   <button
-                     key={label}
-                     className={`order-card__btn ${primary ? 'order-card__btn--primary' : ''}`}
+                     key={action.type}
+                     className={`order-card__btn ${action.primary ? 'order-card__btn--primary' : ''
+                        }`}
+                     onClick={() => onActionClick(action, order.id)}
                   >
-                     {label}
+                     {action.label}
                   </button>
                ))}
             </div>

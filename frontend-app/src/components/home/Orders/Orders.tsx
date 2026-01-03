@@ -1,6 +1,6 @@
 import React from 'react';
 import { OrderCard } from './OrderCard';
-import type { OrderProps } from '../../../shared/types/ordersTypes';
+import type { OrderProps, OrderAction } from '../../../shared/types/ordersTypes';
 import './Orders.scss';
 
 type OrderName = 'all' | 'active' | 'completed';
@@ -8,6 +8,8 @@ type OrderName = 'all' | 'active' | 'completed';
 interface Props {
    name: OrderName;
    orders: OrderProps[];
+   onActionClick: (action: OrderAction, orderId: number) => void;
+   respondingId?: number | null;
 }
 
 const CARD_STATUS_LABEL: Record<OrderName, string> = {
@@ -16,7 +18,7 @@ const CARD_STATUS_LABEL: Record<OrderName, string> = {
    completed: 'Завершенные заказы',
 };
 
-export const Orders: React.FC<Props> = ({ name, orders }) => {
+export const Orders: React.FC<Props> = ({ name, orders, onActionClick, respondingId }) => {
    return (
       <section className="orders" id="order-list">
          <div className="orders__question">
@@ -26,7 +28,12 @@ export const Orders: React.FC<Props> = ({ name, orders }) => {
 
          <div className="orders__list">
             {orders.map((order) => (
-               <OrderCard order={order} />
+               <OrderCard
+                  key={order.id}
+                  order={order}
+                  onActionClick={onActionClick}
+                  isResponding={respondingId === order.id}
+               />
             ))}
          </div>
       </section>

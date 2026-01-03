@@ -108,3 +108,22 @@
       }
    }
 }
+
+.order-card--responding {
+   animation: respond-pulse 700ms ease-out both;
+}
+
+@keyframes respond-pulse {
+   0% {
+      transform: translateX(0);
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+   }
+   30% {
+      transform: translateX(6px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+   }
+   100% {
+      transform: translateX(0);
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+   }
+}

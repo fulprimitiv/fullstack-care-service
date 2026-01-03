@@ -1,7 +1,17 @@
 import type { HelpRequestType, HelpRequestStatus } from './enums'
 
+export type OrderActionType =
+   | 'RESPOND'
+   | 'CANCEL'
+   | 'EDIT'
+   | 'CONTACT'
+   | 'REPEAT'
+   | 'RATE'
+   | 'DETAILS';
+
 export interface OrderAction {
    label: string;
+   type: OrderActionType;
    primary?: boolean;
 }
 
