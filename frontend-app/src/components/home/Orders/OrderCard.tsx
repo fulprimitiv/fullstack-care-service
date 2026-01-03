@@ -1,24 +1,14 @@
 import React from 'react';
-import type { OrderProps, OrderStatus } from '../../../shared/types/ordersTypes';
+import type { OrderProps } from '../../../shared/types/ordersTypes';
+import { useAuth } from '../../../shared/hooks/useAuth';
 import './OrderCard.scss';
 
 interface Props {
    order: OrderProps;
 }
 
-const ORDER_STATUS_LABEL: Record<OrderStatus, string> = {
-   active: 'В процессе',
-   searching: 'Поиск волонтёра',
-   completed: 'Выполнено',
-};
-
-const ORDER_ACTIONS: Record<OrderStatus, { label: string; primary?: boolean }[]> = {
-   active: [{ label: 'Связаться', primary: true }],
-   searching: [{ label: 'Отменить' }, { label: 'Редактировать' }],
-   completed: [{ label: 'Повторить заказ', primary: true }, { label: 'Оставить отзыв' }],
-};
-
 export const OrderCard: React.FC<Props> = ({ order }) => {
+   const { role } = useAuth();
    return (
       <div className="order-card">
          <div className="order-card__content">
@@ -34,30 +24,25 @@ export const OrderCard: React.FC<Props> = ({ order }) => {
                   <span className="order-card__icon order-card__icon--time" />
                   {order.date}, {order.time}
                </li>
-
-               {order.volunteer && (
-                  <li className="order-card__meta-item">
-                     <span className="order-card__icon order-card__icon--volunteer" />
-                     Волонтёр: {order.volunteer}
-                  </li>
-               )}
             </ul>
 
             <span className={`order-card__status order-card__status--${order.status}`}>
-               {ORDER_STATUS_LABEL[order.status]}
+               {order.statusLabel}
             </span>
          </div>
 
-         <div className="order-card__actions">
-            {ORDER_ACTIONS[order.status].map(({ label, primary }) => (
-               <button
-                  key={label}
-                  className={`order-card__btn ${primary ? 'order-card__btn--primary' : ''}`}
-               >
-                  {label}
-               </button>
-            ))}
-         </div>
+         {role === 'VOLUNTEER' && order.actions.length > 0 && (
+            <div className="order-card__actions">
+               {order.actions.map(({ label, primary }) => (
+                  <button
+                     key={label}
+                     className={`order-card__btn ${primary ? 'order-card__btn--primary' : ''}`}
+                  >
+                     {label}
+                  </button>
+               ))}
+            </div>
+         )}
       </div>
    );
 };

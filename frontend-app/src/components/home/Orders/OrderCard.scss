@@ -1,4 +1,4 @@
-@use '../../../styles/variables' as *;
+@use "../../../styles/variables" as *;
 
 .order-card {
    background: $bg-secondary;
@@ -39,15 +39,15 @@
       background-size: contain;
 
       &--address {
-         background-image: url('../../../../public/images/svg/grey/place.svg');
+         background-image: url("../../../../public/images/svg/grey/place.svg");
       }
 
       &--time {
-         background-image: url('../../../../public/images/svg/grey/time.svg');
+         background-image: url("../../../../public/images/svg/grey/time.svg");
       }
 
       &--volunteer {
-         background-image: url('../../../../public/images/svg/grey/user.svg');
+         background-image: url("../../../../public/images/svg/grey/user.svg");
       }
    }
 
@@ -59,17 +59,17 @@
       font-weight: 700;
       line-height: 22.4px;
 
-      &--active {
+      &--IN_PROGRESS {
          background: $bg-progress;
          color: $color-accent-orange-dark;
       }
 
-      &--searching {
+      &--CREATED {
          background: $bg-search;
          color: $color-accent-primary;
       }
 
-      &--completed {
+      &--COMPLETED {
          background: $bg-success;
          color: $color-accent-success;
       }

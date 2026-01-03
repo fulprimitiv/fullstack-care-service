@@ -1,7 +1,9 @@
 import React from 'react';
 import { OrderCard } from './OrderCard';
-import type { OrderProps, OrderName } from '../../../shared/types/ordersTypes';
+import type { OrderProps } from '../../../shared/types/ordersTypes';
 import './Orders.scss';
+
+type OrderName = 'all' | 'active' | 'completed';
 
 interface Props {
    name: OrderName;
@@ -9,7 +11,7 @@ interface Props {
 }
 
 const CARD_STATUS_LABEL: Record<OrderName, string> = {
-   all: 'Список всех заявок',
+   all: 'Заявки нуждающихся',
    active: 'Активные заказы',
    completed: 'Завершенные заказы',
 };
@@ -24,7 +26,7 @@ export const Orders: React.FC<Props> = ({ name, orders }) => {
 
          <div className="orders__list">
             {orders.map((order) => (
-               <OrderCard key={order.id} order={order} />
+               <OrderCard order={order} />
             ))}
          </div>
       </section>

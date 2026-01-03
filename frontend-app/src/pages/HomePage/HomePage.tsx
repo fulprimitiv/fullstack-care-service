@@ -1,36 +1,53 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { ActionCard } from '../../components/home/ActionCard/ActionCard';
 import { QuickActions } from '../../components/home/QuickActions/QuickActions';
 import { Orders } from '../../components/home/Orders/Orders';
 import { useAuth } from '../../shared/hooks/useAuth';
 import type { HelpRequestType } from '../../shared/types/enums';
-import type { OrderStatus } from '../../shared/types/ordersTypes';
+import type { OrderProps } from '../../shared/types/ordersTypes';
+import { helpRequestApi } from '../../api/helpRequest.service';
+import { getTitleByType } from '../../shared/utils/getTitleByType'
+import { STATUS_CONFIG } from '../../shared/constants/StatusConfig'
 import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
-   const orders = [
-      {
-         id: 1,
-         title: 'Помощь с покупками',
-         address: 'ул. Ленина, 15',
-         date: 'Сегодня',
-         time: '10:00',
-         status: 'searching' as OrderStatus,
-         type: 'WALK' as HelpRequestType,
-      },
-      {
-         id: 2,
-         title: 'Вынести мусор',
-         address: 'ул. Мира, 28',
-         date: 'Завтра',
-         time: '00:00',
-         status: 'searching' as OrderStatus,
-         type: 'SHOPPING' as HelpRequestType,
-      },
-   ];
-
    const { isAuth, role } = useAuth();
+   const [orders, setOrders] = useState<OrderProps[]>([]);
    const [selectedType, setSelectedType] = useState<HelpRequestType | null>(null);
+
+   useEffect(() => {
+      const fetchOrders = async () => {
+         try {
+            const response = await helpRequestApi.getAll();
+
+            const mappedOrders: OrderProps[] = response.data.map(order => {
+               const config = STATUS_CONFIG[order.status];
+
+               return {
+                  id: order.id,
+                  title: getTitleByType(order.type),
+                  address: order.address,
+                  date: new Date(order.requestDate).toLocaleDateString(),
+                  time: new Date(order.requestDate).toLocaleTimeString([], {
+                     hour: '2-digit',
+                     minute: '2-digit',
+                  }),
+                  status: config.status,
+                  statusLabel: config.statusLabel,
+                  actions: config.actions[role as keyof typeof config.actions],
+                  type: order.type,
+               };
+            });
+
+            setOrders(mappedOrders);
+         } catch (e) {
+            console.error('Ошибка загрузки заявок', e);
+         }
+      };
+
+      fetchOrders();
+   }, [role]);
+
 
    const handleSelectType = (type: HelpRequestType) => {
       setSelectedType(prev => (prev === type ? null : type));

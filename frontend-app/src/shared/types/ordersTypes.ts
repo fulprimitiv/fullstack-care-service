@@ -1,6 +1,9 @@
-import type { HelpRequestType } from './enums'
-export type OrderStatus = 'active' | 'searching' | 'completed';
-export type OrderName = 'all' | 'active' | 'completed';
+import type { HelpRequestType, HelpRequestStatus } from './enums'
+
+export interface OrderAction {
+   label: string;
+   primary?: boolean;
+}
 
 export interface OrderProps {
    id: number;
@@ -8,7 +11,9 @@ export interface OrderProps {
    address: string;
    date: string;
    time: string;
-   status: OrderStatus;
+   status: HelpRequestStatus;
+   statusLabel: string;
+   actions: readonly OrderAction[];
    type: HelpRequestType;
 }
 
