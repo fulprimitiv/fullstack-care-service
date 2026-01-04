@@ -2,15 +2,14 @@ package org.example.backendapp.service
 
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
 import org.example.backendapp.entity.User
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Service
-import java.security.Key
 import java.util.*
+import javax.crypto.SecretKey
 
 @Service
 class JwtService {
@@ -76,11 +75,11 @@ class JwtService {
      */
     private fun generateToken(extraClaims: Map<String, Any>, userDetails: UserDetails): String =
         Jwts.builder()
-            .setClaims(extraClaims)
-            .setSubject(userDetails.username)
-            .setIssuedAt(Date(System.currentTimeMillis()))
-            .setExpiration(Date(System.currentTimeMillis() + 100_000 * 60 * 24))
-            .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+            .claims(extraClaims)
+            .subject(userDetails.username)
+            .issuedAt(Date(System.currentTimeMillis()))
+            .expiration(Date(System.currentTimeMillis() + 100_000 * 60 * 24))
+            .signWith(getSigningKey())
             .compact()
 
     /**
@@ -109,17 +108,17 @@ class JwtService {
      */
     private fun extractAllClaims(token: String): Claims =
         Jwts.parser()
-            .setSigningKey(getSigningKey())
+            .decryptWith(getSigningKey())
             .build()
-            .parseClaimsJws(token)
-            .body
+            .parseSignedClaims(token)
+            .payload
 
     /**
      * Получение ключа для подписи токена
      *
      * @return ключ
      */
-    private fun getSigningKey(): Key {
+    private fun getSigningKey(): SecretKey {
         val keyBytes = Decoders.BASE64.decode(jwtSigningKey)
         return Keys.hmacShaKeyFor(keyBytes)
     }
