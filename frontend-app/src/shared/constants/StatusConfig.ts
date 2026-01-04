@@ -3,8 +3,8 @@ export const STATUS_CONFIG = {
 		statusLabel: 'Поиск волонтёра',
 		actions: {
 			VOLUNTEER: [
-				{ label: 'Откликнуться', type: 'RESPOND', primary: true },
-				{ label: 'Ознакомиться подробнее', type: 'DETAILS' },
+				{ label: 'Подробнее', type: 'DETAILS', primary: true },
+				{ label: 'Откликнуться', type: 'RESPOND' },
 			],
 			RECIPIENT: [{ label: 'Отменить', type: 'CANCEL' }],
 		},
@@ -14,12 +14,14 @@ export const STATUS_CONFIG = {
 		statusLabel: 'В процессе',
 		actions: {
 			VOLUNTEER: [
-				{ label: 'Связаться', type: 'CONTACT', primary: true },
-				{ label: 'Отменить', type: 'CANCEL' },
+				{ label: 'Подробнее', type: 'DETAILS', primary: true },
+				{ label: 'Завершить', type: 'COMPLETE' },
+				{ label: 'Отказаться', type: 'CANCEL', cancel: true },
 			],
 			RECIPIENT: [
-				{ label: 'Связаться', type: 'CONTACT', primary: true },
-				{ label: 'Отменить', type: 'CANCEL' },
+				{ label: 'Подробнее', type: 'DETAILS', primary: true },
+				{ label: 'Завершить', type: 'COMPLETE' },
+				{ label: 'Отменить', type: 'CANCEL', cancel: true },
 			],
 		},
 	},
@@ -27,8 +29,8 @@ export const STATUS_CONFIG = {
 	COMPLETED: {
 		statusLabel: 'Выполнено',
 		actions: {
-			VOLUNTEER: [{ label: 'Оставить отзыв', type: 'RATE' }],
-			RECIPIENT: [{ label: 'Оставить отзыв', type: 'RATE' }],
+			RECIPIENT: [],
+			VOLUNTEER: [],
 		},
 	},
 

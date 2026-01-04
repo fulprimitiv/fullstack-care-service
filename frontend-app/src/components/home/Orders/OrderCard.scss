@@ -104,6 +104,11 @@
          color: $bg-primary;
       }
 
+      &--cancel {
+         border: 2px solid $color-accent-red-dark;
+         color: $color-accent-red-dark;
+      }
+
       transition:
          transform 0.15s ease,
          box-shadow 0.15s ease;

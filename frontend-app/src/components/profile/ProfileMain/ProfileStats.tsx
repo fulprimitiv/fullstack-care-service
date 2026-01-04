@@ -28,7 +28,7 @@ export const ProfileStats: React.FC<Props> = ({
             <span>Активных заказов: </span> {active}
          </li>
          <li>
-            <span>На сервисе с: </span> {since}
+            <span>Дата создания аккаунта: </span> {since}
          </li>
          {/* <li><span>Рейтинг: </span> {rating}</li> */}
       </ul>

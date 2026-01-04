@@ -7,12 +7,14 @@ export type OrderActionType =
    | 'CONTACT'
    | 'REPEAT'
    | 'RATE'
-   | 'DETAILS';
+   | 'DETAILS'
+   | 'COMPLETE';
 
 export interface OrderAction {
    label: string;
    type: OrderActionType;
    primary?: boolean;
+   cancel?: boolean;
 }
 
 export interface OrderProps {

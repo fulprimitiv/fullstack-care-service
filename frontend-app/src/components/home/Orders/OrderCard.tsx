@@ -40,7 +40,7 @@ export const OrderCard: React.FC<Props> = ({ order, onActionClick, isResponding,
                   <button
                      key={action.type}
                      className={`order-card__btn ${action.primary ? 'order-card__btn--primary' : ''
-                        }`}
+                        } ${action.cancel ? 'order-card__btn--cancel' : ''}`}
                      onClick={() => onActionClick(action, order.id)}
                   >
                      {action.label}

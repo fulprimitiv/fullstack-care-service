@@ -1,56 +1,139 @@
+@use "../../styles/variables" as *;
+
 .modal-overlay {
 	position: fixed;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.35);
+	inset: 0;
+	background: $bg-image-overlay;
+	backdrop-filter: blur(3px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	z-index: 3000;
+	padding: 16px;
 }
 
 .modal {
-	width: 90%;
+	width: 100%;
 	max-width: 720px;
-	background: #fff;
-	border-radius: 12px;
-	padding: 24px;
-	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+	background: $bg-primary;
+	border-radius: $radius-lg;
+	padding: 28px 28px 32px;
+	box-shadow: $shadow-modal;
 	position: relative;
+	animation: modalFadeIn 0.25s ease-out;
 }
 
-.modal__content {
-	margin-bottom: 25px;
+@keyframes modalFadeIn {
+	from {
+		transform: translateY(12px) scale(0.98);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0) scale(1);
+		opacity: 1;
+	}
 }
 
 .modal__close {
 	position: absolute;
-	right: 12px;
-	top: 8px;
+	right: 16px;
+	top: 16px;
 	border: none;
 	background: transparent;
 	font-size: 28px;
 	line-height: 1;
 	cursor: pointer;
+	color: $color-secondary;
+	transition:
+		color $transition-fast,
+		transform $transition-fast;
+
+	&:hover {
+		color: $color-primary;
+		transform: rotate(90deg);
+	}
 }
 
+.title,
 .modal h2 {
-	margin-top: 0;
-	margin-bottom: 25px;
+	margin: 0 0 24px;
+	font-size: 24px;
+	font-weight: 700;
+	color: $color-accent-success;
+}
+
+.modal__content {
+	margin-bottom: 20px;
+	padding: 16px 18px;
+	border-radius: $radius-md;
+	border: 1px solid rgba($color-accent-success, 0.3);
+	box-shadow: $shadow-card;
+	transition:
+		transform $transition-base,
+		box-shadow $transition-base;
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+	}
+}
+
+.modal__content:last-of-type {
+	margin-bottom: 0;
 }
 
 .modal p {
-	margin: 8px 0;
-	color: #333;
+	margin: 6px 0;
+	font-size: 15px;
+	line-height: 1.45;
+	color: $color-primary;
+}
+
+.modal p strong {
+	font-weight: 600;
+	color: $color-primary;
+}
+
+.modal__content--volunteer {
+	background: $bg-success;
+	border-color: $color-accent-success;
+
+	strong {
+		color: $color-accent-success;
+	}
+}
+
+.modal__content--recipient {
+	background: $bg-search;
+	border-color: $color-accent-primary;
+
+	strong {
+		color: $color-accent-primary;
+	}
+}
+
+.modal__description {
+	margin-top: 16px;
+	padding: 16px 18px;
+	border-radius: $radius-md;
+	background: $bg-secondary;
+	border: 1px dashed rgba($color-secondary, 0.4);
+	color: $color-primary;
+	font-size: 15px;
+	line-height: 1.55;
 }
 
 @media (max-width: 480px) {
 	.modal {
-		padding: 18px;
+		padding: 20px;
+		border-radius: $radius-md;
 	}
-	.modal__close {
-		font-size: 24px;
+
+	.modal h2 {
+		font-size: 20px;
+	}
+
+	.modal p {
+		font-size: 14px;
 	}
 }

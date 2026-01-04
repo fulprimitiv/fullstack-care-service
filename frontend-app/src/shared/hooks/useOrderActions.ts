@@ -46,18 +46,24 @@ export const useOrderActions = (options?: Options) => {
 				return;
 			}
 
+			case 'COMPLETE': {
+				await helpRequestApi.updateStatus(orderId, 'COMPLETED');
+				navigate('/my-orders');
+				return;
+			}
+
+			// TODO: чат, повтор заявки, рейтинг
 			case 'CONTACT': {
 				navigate(`/chat/${orderId}`);
 				return;
 			}
 
-			case 'REPEAT': {
-				navigate(`/create-order?repeat=${orderId}`);
+			case 'RATE': {
 				return;
 			}
 
-			case 'RATE': {
-				// TODO: modal rating
+			case 'REPEAT': {
+				navigate(`/create-order?repeat=${orderId}`);
 				return;
 			}
 		}
