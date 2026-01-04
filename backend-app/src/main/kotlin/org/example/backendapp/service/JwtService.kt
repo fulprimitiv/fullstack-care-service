@@ -37,7 +37,7 @@ class JwtService {
         if (userDetails is User) {
             claims["id"] = userDetails.id
             claims["email"] = userDetails.email
-            claims["role"] = userDetails.role
+            claims["role"] = userDetails.role.name
         }
         return generateToken(claims, userDetails)
     }
@@ -108,7 +108,7 @@ class JwtService {
      */
     private fun extractAllClaims(token: String): Claims =
         Jwts.parser()
-            .decryptWith(getSigningKey())
+            .verifyWith(getSigningKey())
             .build()
             .parseSignedClaims(token)
             .payload
