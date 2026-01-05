@@ -9,7 +9,7 @@ export const useAuth = () => {
    const login = async (data: SignInRequest) => {
       const res = await authApi.signIn(data);
       localStorage.setItem('token', res.token);
-      window.location.href = '/list';
+      window.location.href = '/';
    };
 
    const register = async (data: CreateUserCommand) => {
@@ -20,7 +20,7 @@ export const useAuth = () => {
 
    const logout = useCallback(() => {
       localStorage.removeItem('token');
-      window.location.href = '/list';
+      window.location.href = '/';
    }, []);
 
    return {
